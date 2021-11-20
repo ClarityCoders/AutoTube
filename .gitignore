@@ -4,3 +4,4 @@
 __pycache__
 client_secrets.json
 *.json
+*.mp4

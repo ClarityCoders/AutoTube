@@ -43,5 +43,5 @@ while True:
     print(video_data["title"])
     print("Printing in 60 seconds...")
     time.sleep(60)
-    update_video(video_data)
+    #update_video(video_data)
     time.sleep(60 * 60 * 24 - 1)

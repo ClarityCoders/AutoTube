@@ -16,6 +16,7 @@ class RedditBot():
             client_secret=os.getenv('client_secret'),
             user_agent=os.getenv('user_agent'),
         )
+
         dir_path = os.path.dirname(os.path.realpath(__file__))
         self.data_path = os.path.join(dir_path, "data/")
         self.post_data = []
