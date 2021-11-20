@@ -2,7 +2,17 @@ from moviepy.editor import *
 import random
 import os
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+def GetDaySuffix(day):
+    if day == 1 or day == 21 or day == 31:
+        return "st"
+    elif day == 2 or day == 22:
+        return "nd"
+    elif day == 3 or day == 23:
+        return "rd"
+    else:
+        return "th"
+
+dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 music_path = os.path.join(dir_path, "Music/")
 
 def add_return_comment(comment):

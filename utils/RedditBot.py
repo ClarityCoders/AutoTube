@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from datetime import date
 import requests
 import json 
-from Scalegif import scale_gif
+from utils.Scalegif import scale_gif
 
 load_dotenv()
 
@@ -17,7 +17,7 @@ class RedditBot():
             user_agent=os.getenv('user_agent'),
         )
 
-        dir_path = os.path.dirname(os.path.realpath(__file__))
+        dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
         self.data_path = os.path.join(dir_path, "data/")
         self.post_data = []
         self.already_posted = []

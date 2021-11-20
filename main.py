@@ -1,18 +1,8 @@
-from CreateMovie import CreateMovie
-from RedditBot import RedditBot
-from upload_video import update_video
+from utils.CreateMovie import CreateMovie, GetDaySuffix
+from utils.RedditBot import RedditBot
+from utils.upload_video import update_video
 from datetime import date
 import time
-
-def GetDaySuffix(day):
-    if day == 1 or day == 21 or day == 31:
-        return "st"
-    elif day == 2 or day == 22:
-        return "nd"
-    elif day == 3 or day == 23:
-        return "rd"
-    else:
-        return "th"
 
 #Create data
 redditbot = RedditBot()
