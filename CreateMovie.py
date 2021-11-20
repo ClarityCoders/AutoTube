@@ -26,7 +26,6 @@ class CreateMovie():
 
         clips = []
         for post in post_data:
-            print(post['image_path'])
             if "gif" not in post['image_path']:
                 clip = ImageSequenceClip([post['image_path']], durations=[12])
                 clips.append(clip)
@@ -49,7 +48,6 @@ class CreateMovie():
         text_clips = []
         notification_sounds = []
         for i, post in enumerate(post_data):
-            print(post['Best_comment'])
             return_comment, return_count = add_return_comment(post['Best_comment'])
             txt = TextClip(return_comment, font='Courier',
                         fontsize=38, color=colors.pop(), bg_color='black')
@@ -62,20 +60,18 @@ class CreateMovie():
             return_comment, _ = add_return_comment(post['best_reply'])
             txt = TextClip(return_comment, font='Courier',
             fontsize=38, color=colors.pop(), bg_color='black')
-            #print(TextClip.list('color'))
+
             txt = txt.set_position((15,585 + (return_count * 50)))
             txt = txt.set_start((0, 5 + (i * 12))) # (min, s)
             txt = txt.set_duration(7)
             txt = txt.crossfadein(0.5)
             txt = txt.crossfadeout(0.5)
             text_clips.append(txt)
-            notification = AudioFileClip("notification.mp3")
+            notification = AudioFileClip(os.path.join(music_path, f"notification.mp3"))
             notification = notification.set_start((0, 3 + (i * 12)))
-            #notification = notification.set_duration(2)
             notification_sounds.append(notification)
-            notification = AudioFileClip("notification.mp3")
+            notification = AudioFileClip(os.path.join(music_path, f"notification.mp3"))
             notification = notification.set_start((0, 5 + (i * 12)))
-            #notification = notification.set_duration(2)
             notification_sounds.append(notification)
         
         music_file = os.path.join(music_path, f"music{random.randint(0,4)}.mp3")
@@ -84,7 +80,6 @@ class CreateMovie():
         music = music.volumex(.4)
         music = music.set_duration(59)
 
-        notification = AudioFileClip("notification.mp3")
         new_audioclip = CompositeAudioClip([music]+notification_sounds)
 
         clip = CompositeVideoClip([clip] + text_clips)

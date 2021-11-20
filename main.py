@@ -41,7 +41,9 @@ while True:
             "privacyStatus":"public"
     }
     print(video_data["title"])
-    print("Printing in 60 seconds...")
-    time.sleep(60)
+    print("Posting Video in 5 minutes...")
+    time.sleep(60 * 5)
     #update_video(video_data)
+
+    # Sleep until ready to post another video!
     time.sleep(60 * 60 * 24 - 1)

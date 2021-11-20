@@ -21,10 +21,13 @@ class RedditBot():
         self.data_path = os.path.join(dir_path, "data/")
         self.post_data = []
         self.already_posted = []
-        if os.path.isfile("posted_already.json"):
-            with open("posted_already.json", "r") as file:
+
+        #   Check for a posted_already.json file
+        self.posted_already_path = os.path.join(self.data_path, "posted_already.json")
+        if os.path.isfile(self.posted_already_path):
+            print("Loading posted_already.json from data folder.")
+            with open(self.posted_already_path, "r") as file:
                 self.already_posted = json.load(file)
-                #print(self.already_posted)
 
     def get_posts(self):
         self.post_data = []
@@ -82,12 +85,19 @@ class RedditBot():
                     best_comment.refresh()
                     replies = best_comment.replies
 
+                    best_reply = None
                     for top_level_comment in replies:
                         # Here you can fetch data off the comment.
                         # For the sake of example, we're just printing the comment body.
                         best_reply = top_level_comment
                         if len(best_reply.body) <= 140 and "http" not in best_reply.body:
                             break
+                    
+                    "incase no best reply"
+                    if best_reply is not None:
+                        best_reply = best_reply.body
+                    else:
+                        best_reply = "MIA"
 
                     data_file = {
                         "image_path": image_path,
@@ -96,21 +106,17 @@ class RedditBot():
                         "score": submission.score,
                         "18": submission.over_18,
                         "Best_comment": best_comment.body,
-                        "best_reply": best_reply.body
+                        "best_reply": best_reply
                     }
                     
                     self.post_data.append(data_file)
                     self.already_posted.append(submission.id)
                     with open(f"{data_folder_path}{submission.id}.json", "w") as outfile:
                         json.dump(data_file, outfile) 
-                    with open("posted_already.json", "w") as outfile:
+                    with open(self.posted_already_path, "w") as outfile:
                         json.dump(self.already_posted, outfile) 
                 else:
                     return None
-                    
-            #except Exception as e:
-            #    print(f"Image failed. {submission.url.lower()}")
-            #    print(e)
 
 if __name__ == "__main__":
     redditbot = RedditBot()
@@ -120,7 +126,6 @@ if __name__ == "__main__":
     redditbot.create_data_folder()
 
     for post in posts:
-        #print(post.title, post.url, post.permalink)
         redditbot.save_image(post)
     
     #redditbot.create_movie()
