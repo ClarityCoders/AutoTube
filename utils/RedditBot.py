@@ -29,11 +29,11 @@ class RedditBot():
             with open(self.posted_already_path, "r") as file:
                 self.already_posted = json.load(file)
 
-    def get_posts(self):
+    def get_posts(self, sub="memes"):
         self.post_data = []
-        subreddit = self.reddit.subreddit("memes")
+        subreddit = self.reddit.subreddit(sub)
         posts = []
-        for submission in subreddit.top("day", limit=20):
+        for submission in subreddit.top("week", limit=100):
             if submission.stickied:
                 print("Mod Post")
             else:
@@ -51,7 +51,7 @@ class RedditBot():
             os.makedirs(data_folder_path)
 
     def save_image(self, submission):
-        if "jpg" in submission.url.lower() or "png" in submission.url.lower() or "gif" in submission.url.lower():
+        if "jpg" in submission.url.lower() or "png" in submission.url.lower() or "gif" in submission.url.lower() and "gifv" not in submission.url.lower():
             #try:
 
                 # Get all images to ignore
@@ -74,12 +74,18 @@ class RedditBot():
                     submission.comment_sort = 'best'
 
                     # Get best comment.
+                    best_comment = None
+                    best_comment_2 = None
+
                     for top_level_comment in submission.comments:
                         # Here you can fetch data off the comment.
                         # For the sake of example, we're just printing the comment body.
-                        best_comment = top_level_comment
-                        if len(best_comment.body) <= 140 and "http" not in best_comment.body:
-                            break
+                        if len(top_level_comment.body) <= 140 and "http" not in top_level_comment.body:
+                            if best_comment is None:
+                                best_comment = top_level_comment
+                            else:
+                                best_comment_2 = top_level_comment
+                                break
 
                     best_comment.reply_sort = "top"
                     best_comment.refresh()
@@ -98,6 +104,8 @@ class RedditBot():
                         best_reply = best_reply.body
                     else:
                         best_reply = "MIA"
+                        if best_comment_2 is not None:
+                            best_reply = best_comment_2.body
 
                     data_file = {
                         "image_path": image_path,

@@ -4,12 +4,14 @@ from utils.upload_video import update_video
 from datetime import date
 import time
 
-#Create data
+#Create Reddit Data Bot
 redditbot = RedditBot()
 
+# Leave if you want to run it 24/7
 while True:
-    # Make sure to do just this inside loop.
-    posts = redditbot.get_posts()
+
+    # Gets our new posts pass if image related subs. Default is memes
+    posts = redditbot.get_posts("gifs")
 
     # Create folder if it doesn't exist
     redditbot.create_data_folder()
