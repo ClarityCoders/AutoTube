@@ -11,7 +11,7 @@ redditbot = RedditBot()
 while True:
 
     # Gets our new posts pass if image related subs. Default is memes
-    posts = redditbot.get_posts("gifs")
+    posts = redditbot.get_posts("dankmemes")
 
     # Create folder if it doesn't exist
     redditbot.create_data_folder()
@@ -33,9 +33,9 @@ while True:
             "privacyStatus":"public"
     }
     print(video_data["title"])
-    print("Posting Video in 5 minutes...")
-    time.sleep(60 * 5)
-    #update_video(video_data)
+    print("Posting Video in 1 minutes...")
+    time.sleep(60 * 1)
+    update_video(video_data)
 
     # Sleep until ready to post another video!
     time.sleep(60 * 60 * 24 - 1)
