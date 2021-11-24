@@ -33,7 +33,7 @@ class RedditBot():
         self.post_data = []
         subreddit = self.reddit.subreddit(sub)
         posts = []
-        for submission in subreddit.top("week", limit=100):
+        for submission in subreddit.top("day", limit=100):
             if submission.stickied:
                 print("Mod Post")
             else:

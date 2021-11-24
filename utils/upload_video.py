@@ -129,7 +129,7 @@ def resumable_upload(insert_request):
       print("Sleeping %f seconds and then retrying..." % sleep_seconds)
       time.sleep(sleep_seconds)
 
-def update_video(video_data):
+def upload_video(video_data):
   args = argparser.parse_args()
   if not os.path.exists(video_data['file']):
     exit("Please specify a valid file using the --file= parameter.")

@@ -2,6 +2,8 @@ from moviepy.editor import *
 import random
 import os
 
+dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
 def GetDaySuffix(day):
     if day == 1 or day == 21 or day == 31:
         return "st"
@@ -61,6 +63,7 @@ class CreateMovie():
             return_comment, return_count = add_return_comment(post['Best_comment'])
             txt = TextClip(return_comment, font='Courier',
                         fontsize=38, color=colors.pop(), bg_color='black')
+            txt = txt.on_color(col_opacity=.3)
             txt = txt.set_position((5,500))
             txt = txt.set_start((0, 3 + (i * 12))) # (min, s)
             txt = txt.set_duration(7)
@@ -70,7 +73,7 @@ class CreateMovie():
             return_comment, _ = add_return_comment(post['best_reply'])
             txt = TextClip(return_comment, font='Courier',
             fontsize=38, color=colors.pop(), bg_color='black')
-
+            txt = txt.on_color(col_opacity=.3)
             txt = txt.set_position((15,585 + (return_count * 50)))
             txt = txt.set_start((0, 5 + (i * 12))) # (min, s)
             txt = txt.set_duration(7)
@@ -91,10 +94,18 @@ class CreateMovie():
         music = music.set_duration(59)
 
         new_audioclip = CompositeAudioClip([music]+notification_sounds)
+        clip.write_videofile(f"video_clips.mp4", fps = 24)
 
+        clip = VideoFileClip("video_clips.mp4",audio=False)
         clip = CompositeVideoClip([clip] + text_clips)
         clip.audio = new_audioclip
         clip.write_videofile("video.mp4", fps = 24)
+
+        
+        if os.path.exists(os.path.join(dir_path, "video_clips.mp4")):
+            os.remove(os.path.join(dir_path, "video_clips.mp4"))
+        else:
+            print(os.path.join(dir_path, "video_clips.mp4"))
 
 if __name__ == '__main__':
     print(TextClip.list('color'))
