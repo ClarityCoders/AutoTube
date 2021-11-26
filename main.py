@@ -1,8 +1,18 @@
+"""
+This is the main loop file for our AutoTube Bot!
+
+Quick notes!
+- Currently it's set to try and post a video then sleep for a day.
+- You can change the size of the video currently it's set to post shorts.
+    * Do this by adding a parameter of scale to the image_save function.
+    * scale=(width,height)
+"""
+
+from datetime import date
+import time
 from utils.CreateMovie import CreateMovie, GetDaySuffix
 from utils.RedditBot import RedditBot
 from utils.upload_video import upload_video
-from datetime import date
-import time
 
 #Create Reddit Data Bot
 redditbot = RedditBot()
@@ -21,9 +31,9 @@ while True:
         redditbot.save_image(post)
 
     # Wanted a date in my titles so added this helper
-    day = date.today().strftime("%d")
-    day = str(int(day)) + GetDaySuffix(int(day))
-    dt_string = date.today().strftime("%A %B") + f" {day}"
+    DAY = date.today().strftime("%d")
+    DAY = str(int(DAY)) + GetDaySuffix(int(DAY))
+    dt_string = date.today().strftime("%A %B") + f" {DAY}"
 
     # Create the movie itself!
     CreateMovie.CreateMP4(redditbot.post_data)
