@@ -1,4 +1,4 @@
-<a href="https://youtu.be/GS_0ZKzrvk0" target="_blank"><img src="https://i.imgur.com/EUP08D0.png" title="Clarity Coders YouTube" /></a>
+<a href="https://youtu.be/GS_0ZKzrvk0" target="_blank"><img src="https://i.imgur.com/xqj5z4b.png" title="Clarity Coders YouTube" /></a>
 # Fully Automated YouTube Shorts Channel
 > This code will show you how to setup and fully autmated YouTube Channel.
 > Content is gathered from Reddit using images both animated and still images will work.
