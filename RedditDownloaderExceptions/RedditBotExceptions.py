@@ -6,7 +6,7 @@ class RedditBotException(Exception):
         Exception.__init__(self, *args)
 
 
-class MissingCredentialsException(RedditBotException):
+class MissingRedditCredentialsException(RedditBotException):
     """Raised when credentials for Reddit are missing
     """
 
@@ -19,7 +19,7 @@ class MissingCredentialsException(RedditBotException):
         return f"{self.__message} : \"{self.__credential}\""
 
 
-class IncorrectCredentialsException(RedditBotException):
+class IncorrectRedditCredentialsException(RedditBotException):
     """Raised when reddit credentials are not correct
     """
 

@@ -6,7 +6,7 @@ class YoutubePublisherException(Exception):
         Exception.__init__(self, *args)
 
 
-class MissingCredentialsException(YoutubePublisherException):
+class MissingYouTubeCredentialsException(YoutubePublisherException):
     """Raised when credentials for YouTube are missing
     """
 

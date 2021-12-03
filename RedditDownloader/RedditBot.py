@@ -6,12 +6,12 @@ from typing import List, Tuple
 import praw
 import requests
 from environs import Env
+from prawcore import ResponseException
 
 from MovieMaker import CreateMovie
 from Publishers import YtbPublisher
-from RedditDownloaderExceptions import MissingCredentialsException, IncorrectCredentialsException
+from RedditDownloaderExceptions import MissingRedditCredentialsException, IncorrectRedditCredentialsException
 from .ScaleImages import Scale
-from prawcore import ResponseException
 
 
 class RedditBot(Scale, CreateMovie, YtbPublisher):
@@ -32,11 +32,11 @@ class RedditBot(Scale, CreateMovie, YtbPublisher):
 
         # Check if credentials exists
         if not env("REDDIT_CLIENT_ID"):
-            raise MissingCredentialsException("REDDIT_CLIENT_ID")
+            raise MissingRedditCredentialsException("REDDIT_CLIENT_ID")
         if not env("REDDIT_CLIENT_SECRET"):
-            raise MissingCredentialsException("REDDIT_CLIENT_SECRET")
+            raise MissingRedditCredentialsException("REDDIT_CLIENT_SECRET")
         if not env("REDDIT_USER_AGENT"):
-            raise MissingCredentialsException("REDDIT_USER_AGENT")
+            raise MissingRedditCredentialsException("REDDIT_USER_AGENT")
 
         # connect to reddit
         self.__reddit = praw.Reddit(
@@ -48,8 +48,7 @@ class RedditBot(Scale, CreateMovie, YtbPublisher):
         try:
             self.__reddit.user.me()
         except ResponseException:
-            raise IncorrectCredentialsException()
-
+            raise IncorrectRedditCredentialsException()
 
         # define image format that we want to query
         self.__accepted_format = ["jpg", "png", "gif"]
@@ -77,7 +76,7 @@ class RedditBot(Scale, CreateMovie, YtbPublisher):
                   encoding="utf-8-sig") as f:
             try:
                 self.__already_downloaded = json.loads(f.read())
-            except json.decoder.JSONDecodeError as e:
+            except json.decoder.JSONDecodeError:
                 self.__already_downloaded = []
 
     def __create_subreddit_folder(self, subreddit: str) -> str:
