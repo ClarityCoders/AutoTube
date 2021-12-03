@@ -35,7 +35,7 @@ class CreateMovie(Utils):
             raise MissingImageMagickBinariesException(self.__env("IMAGEMAGICK_BINARY"))
 
         # check if there's music inside the musics dir
-        if not list(Path(self.__music_path).rglob(".mp3")):
+        if not list(Path(self.__music_path).rglob("*.mp3")):
             raise MissingMP3FilesInMusicsDir(self.__music_path)
 
         clips = []

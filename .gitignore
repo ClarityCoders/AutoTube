@@ -239,4 +239,5 @@ data/
 moviepy-master/
 videos/
 dump.txt
+main.py-oauth2.json
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,python
