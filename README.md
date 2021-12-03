@@ -219,7 +219,6 @@ reddit.publish_on(SocialMedias.YouTube, ytb_data)
 ````
 
 ### for publish_on(SocialMedias.YouTube)
-#### still not implemented
 ````json
 
 {
@@ -227,7 +226,7 @@ reddit.publish_on(SocialMedias.YouTube, ytb_data)
   "title": "video title",
   "description": "video description",
   "keywords": "tag1,tag2,tag3...",
-  "privacyStatus": "private|public"
+  "privacyStatus": "private|public|unlisted"
 }
 ````
 
