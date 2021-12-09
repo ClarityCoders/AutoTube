@@ -18,7 +18,7 @@ You can follow this tutorial to create your application : https://youtu.be/bMT9Z
     - REDDIT_CLIENT_ID="YourClientId"
     - REDDIT_USER_AGENT="<AppName-AppVersion>"
     - IMAGEMAGICK_BINARIES="C:\Program Files\ImageMagick-7.1.0-Q16-HDRI\magick.exe" (Change the path to your
-      installation to the convert.exe file. Check [moviepy on pypi](https://pypi.org/project/moviepy/) for more
+      installation to the magick.exe file. Check [moviepy on pypi](https://pypi.org/project/moviepy/) for more
       information)
 
 The `IMAGEMAGICK_BINARIES` environment variable is only needed if you're on Windows or on Ubuntu 16.04LTS
