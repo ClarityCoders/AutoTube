@@ -45,9 +45,7 @@ class RedditBot(Scale, CreateMovie, YtbPublisher):
             user_agent=env("REDDIT_USER_AGENT")
         )
 
-        try:
-            self.__reddit.user.me()
-        except ResponseException:
+        if not self.__reddit.user.me():
             raise IncorrectRedditCredentialsException()
 
         # define image format that we want to query
