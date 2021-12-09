@@ -53,9 +53,9 @@ video_path = reddit.create_video(data)
 
 ytb_data = {
     "file": video_path,
-    "title": "#short \n Memes but this time you laugh for real",
+    "title": "#shorts \n Memes but this time you laugh for real",
     "description": "why tho",
-    "keywords": "meme,memes,laugh,internet,short",
+    "keywords": "meme,memes,laugh,internet,shorts",
     "privacyStatus": "public"
 }
 
