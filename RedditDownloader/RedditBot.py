@@ -46,7 +46,7 @@ class RedditBot(Scale, CreateMovie, YtbPublisher):
         )
 
         try:
-            self.__reddit.user.me()
+            next(self.__reddit.subreddit("memes").top("day", limit=1))
         except ResponseException:
             raise IncorrectRedditCredentialsException()
 
