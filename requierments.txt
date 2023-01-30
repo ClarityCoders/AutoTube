@@ -2,3 +2,4 @@ praw~=7.5.0
 environs~=9.3.5
 pillow~=8.4.0
 moviepy~=1.0.3
+google-api-python-client~=2.31.0
