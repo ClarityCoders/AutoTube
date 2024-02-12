@@ -17,7 +17,7 @@ def GetDaySuffix(day):
 dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 music_path = os.path.join(dir_path, "Music/")
 
-def add_return_comment(comment):
+"""def add_return_comment(comment):
     need_return = 30
     new_comment = ""
     return_added = 0
@@ -28,7 +28,7 @@ def add_return_comment(comment):
             need_return += 30
             return_added += 1
         new_comment += letter
-    return new_comment, return_added
+    return new_comment, return_added"""
         
 
 class CreateMovie():
@@ -58,8 +58,8 @@ class CreateMovie():
         colors = colors + ['PeachPuff3', 'OrangeRed3', 'silver']
         random.shuffle(colors)
         text_clips = []
-        notification_sounds = []
-        for i, post in enumerate(post_data):
+        #notification_sounds = []
+        """for i, post in enumerate(post_data):
             return_comment, return_count = add_return_comment(post['Best_comment'])
             txt = TextClip(return_comment, font='Courier',
                         fontsize=38, color=colors.pop(), bg_color='black')
@@ -85,21 +85,20 @@ class CreateMovie():
             notification_sounds.append(notification)
             notification = AudioFileClip(os.path.join(music_path, f"notification.mp3"))
             notification = notification.set_start((0, 5 + (i * 12)))
-            notification_sounds.append(notification)
+            notification_sounds.append(notification)"""
         
-        music_file = os.path.join(music_path, f"music{random.randint(0,4)}.mp3")
+        music_file = os.path.join(music_path, f"music{random.randint(0,5)}.mp3")
         music = AudioFileClip(music_file)
         music = music.set_start((0,0))
         music = music.volumex(.4)
         music = music.set_duration(59)
 
-        new_audioclip = CompositeAudioClip([music]+notification_sounds)
+        new_audioclip = CompositeAudioClip([music])#+notification_sounds)
         clip.write_videofile(f"video_clips.mp4", fps = 24)
-
         clip = VideoFileClip("video_clips.mp4",audio=False)
         clip = CompositeVideoClip([clip] + text_clips)
         clip.audio = new_audioclip
-        clip.write_videofile("video.mp4", fps = 24)
+        clip.write_videofile("static/video.mp4", fps = 24)
 
         
         if os.path.exists(os.path.join(dir_path, "video_clips.mp4")):
