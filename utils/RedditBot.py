@@ -35,13 +35,14 @@ class RedditBot():
         self.post_data = []
         subreddit = self.reddit.subreddit(sub)
         posts = []
-        for submission in subreddit.top("day", limit=100):
+        for submission in subreddit.top("all", limit=10000):
             if submission.stickied:
                 print("Mod Post")
-            else:
+            elif any(submission.url.endswith(ext) for ext in ['.jpg', '.png', '.gif', '.jpeg'])  or 'reddituploads.com' in submission.url:
                 posts.append(submission)
-
-        return posts
+            else:
+                print("Post is not an image or a gif")
+                return posts
 
     def create_data_folder(self):
         today = date.today()
@@ -73,7 +74,7 @@ class RedditBot():
                 scale_gif(image_path, scale)
 
                 #cv2.imwrite(f"{image_path}", image)
-                submission.comment_sort = 'best'
+                """submission.comment_sort = 'best'
 
                 # Get best comment.
                 best_comment = None
@@ -106,7 +107,7 @@ class RedditBot():
                 else:
                     best_reply = "MIA"
                     if best_comment_2 is not None:
-                        best_reply = best_comment_2.body
+                        best_reply = best_comment_2.body"""
 
                 data_file = {
                     "image_path": image_path,
@@ -114,8 +115,8 @@ class RedditBot():
                     "title": submission.title,
                     "score": submission.score,
                     "18": submission.over_18,
-                    "Best_comment": best_comment.body,
-                    "best_reply": best_reply
+                    #"Best_comment": best_comment.body,
+                    #"best_reply": best_reply"""
                 }
 
                 self.post_data.append(data_file)

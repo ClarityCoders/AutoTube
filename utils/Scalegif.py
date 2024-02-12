@@ -26,7 +26,7 @@ def get_new_frames(gif, scale):
         gif.seek(frame)
         new_frame = Image.new('RGBA', gif.size)
         new_frame.paste(gif)
-        new_frame = new_frame.resize(scale, Image.ANTIALIAS)
+        new_frame = new_frame.resize(scale, Image.LANCZOS)
         new_frames.append(new_frame)
     return new_frames
 

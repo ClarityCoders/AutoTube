@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/static.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="static/cm.jpg" type="image/x-icon">
+    <title>Content machiene</title>
+</head>
+<body>
+    
+    <div class="form-container">
+        <p><h3>Create your content</h3></p>
+        <form method="POST">
+            <div class="form-field">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div class="form-field">
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
+            <div class="form-field">
+                <label for="tags">Tags(Separate with commas)</label>
+                <input type="text" id="tags" name="tags">
+            </div>
+            <div class="form-field">
+                <label for="privacy">Privacy Status</label>
+                <select id="privacy" name="privacy">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                    <option value="unlisted">Unlisted</option>
+                </select>
+                <label for="subreddit" name="subreddit">Subreddit name</label>
+                <select id="subreddit" name="subreddit">
+                    <option value="woosh">memes</option>
+                    <option value="FoodPorn">FoodP</option>
+                    <option value="SpacePorn">SpaceP</option>
+                    <option value="EarthPorn">EarthP</option>
+                    <option value="pics">Pics</option>
+                    <option value="gifs">Gifs</option>
+                    <option value="aww">Cute</option>
+                    <option value="art">art</option>
+                    <option  value="photography">photography</option>
+                </select>
+            </div>
+        </div>
+            <input type="submit" class="kri" value="Submit">
+            <div id="loading" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            
+        </form>
+        <footer>
+            <p><h4>Made by:Kriansh Pokharel
+                <br>pokharelkriansh@gmail.com
+                <br>9761623636
+            </h4>
+            </p>
+        </footer>
+       
+    <script>
+    document.querySelector('form').addEventListener('submit', function() {
+        document.getElementById('loading').style.display = 'block';
+    });
+    
+    
+    document.getElementById('loading').style.display = 'none';</script>
+</body>
+</html>
