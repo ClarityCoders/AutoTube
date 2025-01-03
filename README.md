@@ -1,17 +1,32 @@
-<a href="https://youtu.be/GS_0ZKzrvk0" target="_blank"><img src="https://i.imgur.com/xqj5z4b.png" title="Clarity Coders YouTube" /></a>
-# Fully Automated YouTube Shorts Channel
-> This code will show you how to setup and fully autmated YouTube Channel.
-> Content is gathered from Reddit using images both animated and still images will work.
-> Setup is in depth at times so check out the tutorial video if you need extra help.
+# Project Updates by Kriansh Pokharel
 
-## Setup
-- Clone Project
-- pip install -r requirements.txt 
-- This project uses MoviePy which uses <a href='https://www.imagemagick.org/script/index.php'>ImageMagick</a> to write text onto our movie. Follow the link to install. Not on windows you will need to update config defaults. 
-- create a .env file with your reddit API details.
-- create a client_secrets.json for your YouTube API details. 
-- Both are covered in the video if you need help!
+This repository has undergone significant modifications to enhance functionality and address critical bugs. Below is a detailed summary of the updates and improvements made:
 
-## Contact!
-- YouTube <a href="https://www.youtube.com/claritycoders" target="_blank">Clarity Coders</a>
-- Chat with me! <a href="https://discord.gg/cAWW5qq" target="_blank">Discord</a>
+---
+
+## 🛠️ Modifications and Features Added
+
+1. **Web Interface**  
+   - Added a user-friendly web interface to streamline interactions and improve accessibility.
+
+2. **Reddit Module Update**  
+   - Updated the Reddit module to enhance performance and flexibility.  
+
+3. **Improved Media Handling**  
+   - Revamped the mechanism for pulling images and videos to ensure smoother and faster data retrieval.
+
+---
+
+## 🐞 Bug Fixes
+
+1. **Program Crash Issue**  
+   - Resolved a critical error that caused the program to crash when unable to fetch data from Reddit.  
+
+2. **Subreddit Compatibility**  
+   - Enhanced the class to allow data pulling from multiple external subreddits, instead of being restricted to a single subreddit.
+
+---
+
+These updates ensure a more robust and efficient system, offering users a seamless and reliable experience.
+
+Feel free to contribute or provide feedback by opening issues or submitting pull requests! 😊

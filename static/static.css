@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+    color:rgb(211, 216, 220);
+    background-color: rgb(31, 28, 28);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+.form-container {
+    width: 300px;
+    margin: 0 auto;
+}
+.form-field {
+    margin-bottom: 20px;
+}
+.form-field label {
+    display: block;
+    margin-bottom: 10px;
+}
+.form-field input, .form-field select, .form-field textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(15, 14, 14);
+    color:#ccc;
+}
+.kri {
+    background-color: #4a4a4a; /* Dark grey background */
+    color: #fff; /* White text */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Add some padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove default text decoration */
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s; /* Transition effect */
+    cursor: pointer; /* Change cursor on hover */
+    border-radius: 12px; /* Rounded corners */
+    width: 300px;
+    padding: 10px;
+    margin-left: 39%;
+}
+
+.kri:hover {
+    background-color: #555; /* Darken background on hover */
+    color: #0F0; /* Change text color to tech green on hover */
+}
+footer {
+            background-color: #4a4a4a; /* Dark grey background */
+            color: #fff; /* White text */
+            padding: 20px; /* Add some padding */
+            text-align: center; /* Center the text */
+            border: 2px solid #fff; /* Add a white border */
+            border-radius: 10px; /* Optional: Add rounded corners */
+            width: 80%; /* Adjust as needed */
+            margin: 20px auto; /* Center the footer box */
+            position: fixed;
+            bottom: -50px; /* Start off the screen (adjust as needed) */
+            left: 10%; /* Center the footer */
+            transition: 0.3s; /* Smooth transition */
+        }
+.a{
+   color:aquamarine; 
+}
+.spinner {
+    margin: 100px auto;
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.spinner > div {
+    background-color: #333;
+    height: 100%;
+    width: 6px;
+    display: inline-block;
+    
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+
+}
+
+@-webkit-keyframes sk-stretchdelay {
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+    20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+    0%, 40%, 100% { 
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+    }  20% { 
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+    }
+}
